@@ -12,10 +12,10 @@ def char_teleportation(strng: str) -> str:
     
     if len(pairs) != 0: # main process: move letters around based on portal
         for pair in pairs:
-            if alphabet.index(pair[0].lower()) < alphabet.index(pair[1].lower()):
+            if alphabet.index(pair[0].lower()) > alphabet.index(pair[1].lower()):
                 strng = strng[:strng.index(pair[1])] + strng[strng.index(pair[1])+1:] + pair[1]
                 if strng.index(pair[0]) != 0:
-                    strng = strng[strng.index(pair[1]) - 1] + strng
+                    strng = strng[:strng.index(pair[0])-1] + strng[strng.index(pair[0]):] + strng[strng.index(pair[0]) - 1]
 
             elif alphabet.index(pair[0].lower()) > alphabet.index(pair[1].lower()):
                 strng = pair[1] + strng[:strng.index(pair[1])] + strng[strng.index(pair[1])+1:]
